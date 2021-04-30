@@ -1,0 +1,30 @@
+.note {
+	color: #333;
+	font-style: italic;
+}
+
+.parent {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+figure.box {
+	flex: 1 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background: #eee;
+	border-radius: 1rem;
+	padding: 1rem 3px;
+}
+
+figcaption {
+    background-color: rgba(0,0,0,0.75);
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+	width: 100%;
+}
