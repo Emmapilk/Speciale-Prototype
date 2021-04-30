@@ -4,6 +4,7 @@ if (SpeechRecognition) {
 	recognition.continuos = true;
 	recognition.interimResults = true;
 	recognition.start();
+	recognition.stop();
 } else {
 	var button = document.getElementById('continue');
 	button.innerText = "Your browser is not supported";
@@ -12,7 +13,7 @@ if (SpeechRecognition) {
 
 function nextPage() {
 	createCookie('doRedirect','true','999');
-	window.location = 'Speciale-Prototype/app';
+	window.location = 'app';
 }
 
 function redirect(){
