@@ -1,55 +1,84 @@
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  body {
-	 padding-top: 100px; /* Pad top so microphone permission popover does not cover content */
-  }
-}
-
 html, body {
-	background: #111;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	background: #666;
+}
+
+.bg {
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background: url(https://www.taminggaming.com/cms/graphics/screen_shot_2700.jpg);
+	background-position: center;
+	background-repeat: none;
+	background-size: cover;
+}
+
+.chat-box {
+    font-family: 'Roboto Mono';
+	font-size: 1rem;
+	overflow: hidden;
+	position: absolute;
+	left: 2vw;
+	bottom: 33vh;
+	background: rgba(0,0,0,0.25);
+	padding: 4px;
 	color: white;
+	width: 45vw;
 }
 
-.intro {
+
+#chat-log {
+	background: rgba(0,0,0,0.5);
+	scroll-behavior: smooth;
+	overflow-y: auto;
+	padding-left: 1rem;
+	height: 25vh;
+}
+
+#chat-log p {
+	margin: 0.25rem 0 0;
+}
+
+#chat-log .name1 {
+	color: cyan;
+}
+#chat-log .name2 {
+	color: lime;
+}
+#chat-log .name3 {
+	color: orange;
+}
+
+.input-container {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	padding: 4px 0 0;
 }
 
-.note {
-	color: #ddd;
-	font-style: italic;
+#chat-input {
+	box-sizing: border-box;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	font-size: 1rem;
+	flex: 1;
+	border: none;
 }
 
-.parent {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.box {
-	flex: 1 1;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	background: rgba(255,255,255, 0.25);
-	border-radius: 1rem;
-	padding: 1rem 3px;	
-}
-
-div.box {
-	justify-content: center;
-	margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 40px;
-    margin-inline-end: 40px;
-}
-
-button {
+button#mic {
+	position: absolute;
+	left: calc(50vw - 75px);
+	bottom: 10px;
+	width: 150px;
+	height: 150px;
 	cursor: pointer;
-	color: white;
-	background-color: #007bff;
+	color: lightgray;
+	background-color: rgba(0,0,0,0.75);
 	display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -59,31 +88,78 @@ button {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid #007bff;
+    border: none;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 100px;
     line-height: 1.5;
-    border-radius: .25rem;
+    border-radius: 50%;
 	transition: color .15s;
 }
 
-button:hover {
-	background-color: #0069d9;
-	border-color: #0062cc;
+button#mic:hover {
+	background-color: black;
+	color: white;
 }
 
-button:disabled {
+button#mic:disabled {
 	cursor: not-allowed;
 	background-color: gray;
-	border-color: gray;
 	opacity: 0.65;
 }
 
-figcaption {
-    background-color: rgba(0,0,0,0.5);
-    color: #fff;
-    font: italic smaller sans-serif;
-    padding: 3px;
-    text-align: center;
-	width: 100%;
+
+@media only screen and (max-width: 768px) {
+  /* For mobile: */
+  .chat-box { 
+	width: 93vw;
+  }
+  
+  #chat-log {
+	height: 50vh;  
+  }
+}
+
+/* Scrollbar */
+#chat-log::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+/* Buttons */
+#chat-log::-webkit-scrollbar-button
+{
+  border-style: solid;
+}
+
+
+/* Up */
+#chat-log::-webkit-scrollbar-button:vertical:decrement
+{
+    border-width: 0 5px 7px 5px;
+    border-color: transparent transparent #bfbfbf transparent;
+}
+#chat-log::-webkit-scrollbar-button:vertical:decrement:hover
+{
+  border-color: transparent transparent #afafaf transparent;
+}
+
+
+/* Down */
+#chat-log::-webkit-scrollbar-button:vertical:increment
+{
+    border-width: 7px 5px 0 5px;
+    border-color: #bfbfbf transparent transparent transparent;
+}
+#chat-log::-webkit-scrollbar-button:vertical:increment:hover
+{
+  border-color: #afafaf transparent transparent transparent;
+}
+
+/* Handle */
+#chat-log::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255, 0.25);
+}
+
+/* Handle on hover */
+#chat-log::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255, 0.125);
 }
