@@ -12,7 +12,7 @@ if (SpeechRecognition) {
 
 function nextPage() {
 	createCookie('doRedirect','true','999');
-	window.location = '/app';
+	window.location = 'Speciale-Prototype/app';
 }
 
 function redirect(){
