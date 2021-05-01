@@ -10,10 +10,21 @@ html, body {
 	color: white;
 }
 
+a {
+    color: #809fff;
+}
+
 .intro {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+#info {
+	font-size: 20px;
+	text-align: center;
+	color: #ddd;
+	display: none;
 }
 
 .note {

@@ -12,11 +12,11 @@
 </head>
 
 <body>
-<div class="intro">
-<h1>Speciale Prototype!</h1>
-<p>This website serves as a prototype (proof-of-concept), please consider the following steps so that you receive the optimal experience</p>
-<p class="note">Your audio input will not be stored, in any way.</p>
-</div>
+	<div class="intro">
+		<h1>Speciale Prototype!</h1>
+		<p>This website serves as a prototype (proof-of-concept), please consider the following steps so that you receive the optimal experience</p>
+		<p class="note">Your audio input will not be stored, in any way.</p>
+	</div>
 	<div class="parent">
 			<figure class="box">
 			 <img height="150" src="images/volume.gif" alt="Increase volume indicator">
@@ -27,10 +27,17 @@
 				<figcaption>Please allow microphone access on this website, as it is the main input device.</figcaption>
 			</figure>
 			<div class="box">
-				<button onclick="nextPage()" id="continue">Continue</button>
-			</figure>
+			<div id="info">
+			  <p id="info_error" style="display:none">
+				No microphone was found. Ensure that a microphone is installed and that microphone settings are configured correctly. <br>
+				Permission to use microphone may be blocked.</p>
+			  <p id="info_upgrade">Web Speech API is not supported by this browser.
+				 Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+				 version 25 or later.</p>
+			</div>
+			<button onclick="nextPage()" id="continue">Continue</button>
+			</div>
 	</div>
-	
 	<script src="js/welcome.js"></script>
 </body>
 
