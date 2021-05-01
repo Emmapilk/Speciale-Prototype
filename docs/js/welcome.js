@@ -1,8 +1,14 @@
 window.onload = function () {
 	redirect();
-	
+
 	var button = document.getElementById('continue');
 
+	function nextPage() {
+		createCookie('doRedirect', 'true', '999');
+		window.location = 'app';
+	}
+
+	/* Based on Google Web Speech Demo https://github.com/googlearchive/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html */
 	if (!('webkitSpeechRecognition' in window)) { // && !('SpeechRecognition' in window)) {
 		upgrade();
 	} else {
@@ -26,9 +32,8 @@ window.onload = function () {
 		showInfo('info_upgrade');
 	}
 
-
 	function showInfo(s) {
-	var info = document.getElementById('info');
+		var info = document.getElementById('info');
 		if (s) {
 			for (var child = info.firstChild; child; child = child.nextSibling) {
 				console.log(child);
@@ -42,11 +47,7 @@ window.onload = function () {
 		}
 	}
 
-	function nextPage() {
-		createCookie('doRedirect', 'true', '999');
-		window.location = 'app';
-	}
-
+	/* Based on submission by Leaky Eddie at https://stackoverflow.com/questions/10853523/js-to-redirect-to-a-splash-page-on-first-visit */
 	function redirect() {
 		var thecookie = readCookie('doRedirect');
 		if (thecookie) {

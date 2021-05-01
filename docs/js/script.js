@@ -1,8 +1,4 @@
 window.onload = () => {
-	/* SpeechRecognition variables */
-	var final_transcript = '';
-	var listening = false;
-	var recognition;
 
 	/* Element References */
 	var chatLog = document.getElementById('chat-log');
@@ -35,6 +31,13 @@ window.onload = () => {
 	}
 
 
+	/* Based on Google Web Speech Demo https://github.com/googlearchive/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html */
+	
+	/* SpeechRecognition variables */
+	var final_transcript = '';
+	var listening = false;
+	var recognition;
+	
 	if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
 		/* If SpeechRecognition is not supported */
 		micButton.disabled = true;
@@ -52,7 +55,7 @@ window.onload = () => {
 			setTimeout(() => {
 				listening = false;
 				micButton.classList.remove('blink-red');
-				if(chatInput.value) { /* Send all non-empty messages */
+				if(chatInput.value) { /* Send any unfinished message */
 					sendMessage();
 				}
 			}, 1000); /* Allow an extra second to finish speechRecognition */
@@ -60,6 +63,7 @@ window.onload = () => {
 
 		var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 			if (SpeechRecognition) {
+				/* Speech Recognition setup */
 				recognition = new SpeechRecognition();
 				recognition.continuous = true;
 				recognition.interimResults = true;
@@ -81,8 +85,10 @@ window.onload = () => {
 					if(!listening) return; /* Don't add to chatInput if we're not listening */
 					chatInput.value = final_transcript + interim_transcript;
 					chatInput.scrollLeft = chatInput.scrollWidth;
-					if(final_transcript) sendMessage(); /* Automatically send message after a pause */
+					if(final_transcript) sendMessage(); /* Automatically send message on finish */
 				};
 			}
 	}
 }
+
+
