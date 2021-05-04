@@ -55,7 +55,7 @@ window.onload = () => {
 			setTimeout(() => {
 				listening = false;
 				micButton.classList.remove('blink-red');
-				if(chatInput.value) { /* Send any unfinished message */
+				if(chatInput.value) { /* Send message, even if not finished */
 					sendMessage();
 				}
 			}, 1000); /* Allow an extra second to finish speechRecognition */
@@ -85,7 +85,7 @@ window.onload = () => {
 					if(!listening) return; /* Don't add to chatInput if we're not listening */
 					chatInput.value = final_transcript + interim_transcript;
 					chatInput.scrollLeft = chatInput.scrollWidth;
-					if(final_transcript) sendMessage(); /* Automatically send message on finish */
+					if(final_transcript) sendMessage(); /* Automatically send message at the end of a sentence */
 				};
 			}
 	}

@@ -9,6 +9,7 @@ window.onload = function () {
 	}
 
 	/* Based on Google Web Speech Demo https://github.com/googlearchive/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html */
+	/* Initiate but don't use SpeechRecognition, to test compatability */
 	if (!('webkitSpeechRecognition' in window)) { // && !('SpeechRecognition' in window)) {
 		upgrade();
 	} else {
@@ -16,10 +17,12 @@ window.onload = function () {
 			if (SpeechRecognition) {
 				var recognition = new SpeechRecognition();
 				recognition.continuos = true;
-				recognition.interimResults = true;
 
 				recognition.onerror = function (event) {
 					console.log(event);
+					if (event.error == 'no-speech') {
+						return; /* Ignore no-speech errors */
+					}
 					showInfo('info_error');
 					button.disabled = true;
 				};
