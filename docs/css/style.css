@@ -57,6 +57,18 @@ body {
 	color: orange;
 }
 
+#chat-log .toxic {
+	font-weight: bold;
+	color: red;
+	animation: blink-white 2s infinite;
+}
+
+@keyframes blink-white {
+	0% {background-color: inherit;}
+	50% {background-color: white;}
+	100% {background-color: inherit;}
+}
+
 .input-container {
 	display: flex;
 	padding: 4px 0 0;
@@ -69,6 +81,27 @@ body {
 	font-size: 1rem;
 	flex: 1;
 	border: none;
+}
+
+#warning {
+	display: none;
+	place-items: center;
+	position: absolute;
+	right: 1rem;
+	top: calc(50vh - 12.5vw);
+	width: 25vw;
+	height: 25vw;
+	font-size: 23vw;
+	font-weight: 400;
+	border-radius: 50%;
+	background-color: yellow;
+	animation: blink-fade 1.5s infinite;
+}
+
+@keyframes blink-fade {
+	0% {opacity: 1;}
+	50% {opacity: 0;}
+	100% {opacity: 1;}
 }
 
 button#mic {
