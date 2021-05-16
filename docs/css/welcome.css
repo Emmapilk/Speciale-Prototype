@@ -8,6 +8,8 @@
 html, body {
 	background: #111;
 	color: white;
+	font-family: 'Teko';
+	font-size: 1.1rem;
 }
 
 a {
@@ -46,7 +48,8 @@ a {
 	justify-content: space-between;
 	background: rgba(255,255,255, 0.25);
 	border-radius: 1rem;
-	padding: 1rem 3px;	
+	padding: 1rem 3px;
+	max-width: 600px;
 }
 
 div.box {
@@ -55,6 +58,7 @@ div.box {
     margin-block-end: 1em;
     margin-inline-start: 40px;
     margin-inline-end: 40px;
+	max-width: 100%;
 }
 
 button {

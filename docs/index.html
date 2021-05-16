@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link href="css/welcome.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Teko' rel='stylesheet'>
 </head>
 
 <body>
@@ -26,17 +27,22 @@
 				<img src="images/Microphone-Permission-Chrome.png" alt="Chrome Microphone Permission Popup">
 				<figcaption>Please allow microphone access on this website, as it is the main input device.</figcaption>
 			</figure>
-			<div class="box">
-			<div id="info">
-			  <p id="info_error" style="display:none">
-				No microphone was found. Ensure that a microphone is installed and that microphone settings are configured correctly. <br>
-				Permission to use microphone may be blocked.</p>
-			  <p id="info_upgrade">Web Speech API is not supported by this browser.
-				 Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-				 version 25 or later.</p>
-			</div>
-			<button onclick="nextPage()" id="continue">Continue</button>
-			</div>
+	</div>
+	
+	<div class="box" style="background: none;
+    padding: 0;
+    margin: 0;">
+	<div id="info" style="display: block; font-size: 1.5rem; color: orange; padding-top: 0.5rem;">
+	  <p id="info_error" style="display:none">
+		No microphone was found. Ensure that a microphone is installed and that microphone settings are configured correctly. <br>
+		Permission to use microphone may be blocked.</p>
+	  <p id="info_upgrade" style="display:none">Web Speech API is not supported by this browser.
+		 Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+		 version 25 or later.</p>
+	</div>
+	<button onclick="nextPage()" id="continue" style="width: 20vw;
+    font-size: 2rem;
+    margin-top: 1.5rem;">Continue</button>
 	</div>
 	<script src="js/welcome.js"></script>
 </body>
