@@ -9,7 +9,7 @@ const commonSubstitutions = new Map([
 		]);
 
 var flaggedWords = [
-	'\\w{1}\\*+',
+	'\\w{1}\\*+', /* All words containing * (from profanity filter) */
 	'(are|r)? (you|u)? (a)? (girl|gril)',
 	'(get|go|belong|be|stay|leave)? (in|to|into)? (the)? kitchen',
 	'make (me)? (a)? sandwich',

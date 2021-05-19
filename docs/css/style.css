@@ -96,6 +96,7 @@ body {
 	border-radius: 50%;
 	background-color: yellow;
 	animation: blink-fade 1.5s infinite;
+	z-index: 2;
 }
 
 @keyframes blink-fade {
@@ -161,6 +162,7 @@ button#mic:disabled {
 	line-height: 1.625rem;
 	background-color: red;
 	color: white;
+	z-index: 1;
 }
 
 .footer {

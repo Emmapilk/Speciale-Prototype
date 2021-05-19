@@ -9,7 +9,7 @@ body {
 	background: #111;
 	color: white;
 	font-family: 'Teko';
-	font-size: 1.1rem;
+	font-size: 1.5rem;
 	padding-bottom: 2rem;
 }
 
@@ -111,9 +111,9 @@ figcaption {
 	left: 0;
 	right: 0;
 	text-align: center;
-	font-size: 0.9rem;
+	font-size: 0.9em;
 	font-style: italic;
-	line-height: 1rem;
+	line-height: 0.8em;
 	background-color: #111;
 	color: lightgray;
 }
