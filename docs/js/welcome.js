@@ -78,7 +78,6 @@ window.onload = function () {
 					button.disabled = true;
 				};
 				recognition.start();
-				setTimeout(()=>recognition.stop(), 1000);
 			}
 	}
 }

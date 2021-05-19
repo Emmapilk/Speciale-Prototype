@@ -32,6 +32,7 @@ window.onload = () => {
 	var chatLog = document.getElementById('chat-log');
 	var chatInput = document.getElementById('chat-input');
 	var micButton = document.getElementById('mic');
+	var header = document.getElementById('header');
 	var warning = document.getElementById('warning');
 	var warningTimeout;
 	var audio;
@@ -79,9 +80,13 @@ window.onload = () => {
 		if (flagged) {
 			playAudio('../audio/sample.mp3');
 			syncToxicTextAnimations();
+			header.style.display = 'block';
 			warning.style.display = 'grid';
 			clearTimeout(warningTimeout);
-			warningTimeout = setTimeout(() => warning.style.display = 'none', 10000);
+			warningTimeout = setTimeout(() => {
+				header.style.display = 'none';
+				warning.style.display = 'none'
+			}, 10000);
 		}
 	}
 
