@@ -87,7 +87,7 @@ body {
 	display: none;
 	place-items: center;
 	position: absolute;
-	right: 1rem;
+	right: calc(1rem + 100px);
 	bottom: 15vh;
 	width: 150px;
 	height: 150px;
@@ -163,12 +163,13 @@ button#mic:disabled {
 	display: none;
 	position: absolute;
 	bottom: 15vh;
-	right: 0;
+	right: 1rem;
+	max-width: 350px;
 	padding: 0.125rem;
 	text-align: center;
-	font-size: 1rem;
+	font-size: 1.55rem;
 	font-weight: bold;
-	line-height: 1.125rem;
+	line-height: 1.625rem;
 	background-color: red;
 	color: white;
 	z-index: 2;
@@ -182,6 +183,7 @@ button#mic:disabled {
 		left: 0;
 		right: 0;
 		transform: none;
+		max-width: initial;
 	}
 }
 
