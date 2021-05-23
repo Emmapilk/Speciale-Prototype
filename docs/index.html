@@ -11,28 +11,41 @@
 	<link href='https://fonts.googleapis.com/css?family=Teko' rel='stylesheet'>
 	
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	
+	<link rel="prerender" href="app/index.html">
+	<link rel="prefetch" as="audio" href="audio/bloodhound.mp3">
+	<link rel="prefetch" as="audio" href="audio/caustic.mp3">
+	<link rel="prefetch" as="audio" href="audio/crypto.mp3">
+	<link rel="prefetch" as="audio" href="audio/fuse1.mp3">
+	<link rel="prefetch" as="audio" href="audio/fuse2.mp3">
+	<link rel="prefetch" as="audio" href="audio/gibraltar.mp3">
+	<link rel="prefetch" as="audio" href="audio/horizon.mp3">
+	<link rel="prefetch" as="audio" href="audio/pathfinder.mp3">
+	<link rel="prefetch" as="audio" href="audio/revenant.mp3">
+	<link rel="prefetch" as="audio" href="audio/wraith1.mp3">
+	<link rel="prefetch" as="audio" href="audio/wraith2.mp3">
 </head>
 <body>
 	<div class="intro">
-		<h1>Speciale Prototype!</h1>
+		<h1>Automatic Toxicity Detection!</h1>
 		<p>This website serves as a prototype (proof-of-concept), please consider the following steps so that you receive the optimal experience</p>
 		<p class="note">Your microphone provides audio input but this will not be stored, in any way.</p>
 	</div>
 	<div class="parent">
 			<figure class="box">
-			 <img height="150" src="images/volume.gif" alt="Increase volume indicator">
-			 <figcaption>Please increase the volume on your device, so you can hear any audio that might play.</figcaption>
-			</figure>
-			<figure class="box">
 				<img src="images/Microphone-Permission-Chrome.png" alt="Chrome Microphone Permission Popup">
 				<figcaption>Please allow microphone access on this website, as it is the main input method.</figcaption>
+			</figure>
+			<figure class="box">
+			 <img height="150" src="images/volume.gif" alt="Increase volume indicator">
+			 <figcaption>Please increase the volume on your device, so you can hear any audio that might play.</figcaption>
 			</figure>
 	</div>
 	
 	<div class="box" style="background: none;
     padding: 0;
     margin: 0;">
-	<div id="info" style="display: block; font-size: 1.5rem; color: orange; padding-top: 0.5rem;">
+	<div id="info">
 	  <p id="info_error" style="display:none">
 		No microphone was found. Ensure that a microphone is installed and that microphone settings are configured correctly. <br>
 		Permission to use microphone may be blocked.</p>
@@ -40,9 +53,7 @@
 		 Upgrade to <a href="//www.google.com/chrome">Chrome</a>
 		 version 25 or later.</p>
 	</div>
-	<button onclick="nextPage()" id="continue" style="min-width: 20vw;
-    font-size: 2rem;
-    margin-top: 1.5rem;">Continue</button>
+	<button onclick="nextPage()" id="continue">Continue</button>
 	</div>
 	
 	<div class="footer">Apex Legends&#8482; is a registered trademark of Electronic Art Inc. We are not affiliated with EA/Respawn in any way.</div>

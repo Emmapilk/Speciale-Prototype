@@ -1,5 +1,5 @@
 const commonSubstitutions = new Map([
-			['a', '[aAåÅ4@]'], ['b', '[bB86]'], ['c', '[cC[{(<'], ['d', '[dD]'],
+			['a', '[aAåÅ4@]'], ['b', '[bB86]'], ['c', '[cC[{('], ['d', '[dD]'],
 			['e', '[eE3£€]'], ['f', '[fF]'], ['g', '[gG9]'], ['h', '[hH#]'],
 			['i', '[iI1|!]'], ['j', '[jJ1|!]'], ['k', '[kK]'], ['l', '[lL17|]'],
 			['m', '[mM]'], ['n', '[nN]'], ['o', '[oO0QøØ]'], ['p', '[pP9]'],
@@ -9,10 +9,61 @@ const commonSubstitutions = new Map([
 		]);
 
 var flaggedWords = [
-	'\\w{1}\\*+', /* All words containing * (from profanity filter) */
-	'(are|r)? (you|u)? (a)? (girl|gril)',
+	'\\w{1}\\*+', /* All words containing * (from speech profanity filter) */
+	// '(are|r)? (you|u)? (a)? (girl|gril)',
+
+	/* Name calling / Inappropriate words */
+	'bitch',
+	'slut',
+	'(you|u) ((a)?r(e)?)? (probably)? (a)? (f|ph)at',
+	'ugly',
+	'cunt',
+	'whore',
+	'piece (o(f)?)? shit',
+	'pu(s)+y',
+	'vagina',
+	'rape(d)?',
+
+	/* Sexist Comments */
+	'(because|cos|coz|cus|cuz) ((you|u)(r|re)?)? (a)? girl',
 	'(get|go|belong|be|stay|leave)? (in|to|into)? (the)? kitchen',
-	'make (me)? (a)? sandwich',
+	'stop playing',
+	'(should)? (just)? (get off|leave|disconnect|quit|exit) (the)? (game)?',
+	'(should (be)?|go)? play(ing)? (tetris|sims|animal crossing)',
+	'game for girls',
+	'girls (are|r)? n(o)?t good (at|@)?',
+	'girls (are|r)? bad (at|@)?',
+	'(all)? girls are (only)? good for',
+	'we (are going to|will) l(o)+se',
+	'girls should n(o)?t be gaming',
+	'girls should be banned',
+	'girls are n(o)?t gamers',
+	'girls (can|should|do) (n)?(o)?t ((know)? (how)? (to)?)? (play)? game(s)?',
+	'(fuck|(have)? sex) (with)? me',
+	'(give)? (me)? (a)? blowjob',
+	'(blow|suck) (me|my)',
+	'(you|u) (blow|suck)',
+	'mak(e|ing) (me)? (a)? sandwich',
+	'wash(ing)? (the)? dishes',
+	'dish wash(er|ing)',
+	'girl(s)? (always)? get(s)? (knock|kill|down)ed (first|1st)',
+	'carry(ing)? (the)? girl(s)?',
+	'girls (have|need) (to)? (be|get)? carr(y|ied)',
+	'better than girls',
+	'men (r|are|play) better',
+	'girl(s)? (r|are) n(o)?t (supposed|meant) to (play)? (game(s)?)?',
+
+	/* Threats */
+	'k(ill)? y(our)?s(elf)?',
+	'hope you (will)? die',
+	'(get (killed)?|die) (of|from|by) cancer',
+	'(get|become) sick',
+	'jump (in front|into|off) (of)? (a)? (car|train|traffic|cliff|bridge)',
+	
+	/* General */
+	'fuck off',
+	'(delete|uninstall|remove) (the)? (game|apex)',
+	'you (are|r|re) (a)? shit (player)?',
 ]
 
 console.log({
@@ -24,7 +75,6 @@ for (var i = 1; i < flaggedWords.length; i++) {
 	flaggedWords[i] = flaggedWords[i].split('').map(chr =>
 			commonSubstitutions.has(chr) ? commonSubstitutions.get(chr) + '[\\W]*' : chr).join('');
 }
-console.log(flaggedWords);
 
 window.onload = () => {
 
@@ -36,6 +86,7 @@ window.onload = () => {
 	var warning = document.getElementById('warning');
 	var warningTimeout;
 	var audio;
+	var audioFiles = document.querySelectorAll('link[rel="preload"]');
 
 	function scrollChat() {
 		chatLog.scrollTop = chatLog.scrollHeight;
@@ -67,6 +118,7 @@ window.onload = () => {
 		for (const word of flaggedWords) {
 			var regex = new RegExp('(' + word + ')', 'g');
 			messageText = messageText.replace(regex, match => {
+				console.log("Flagged for:", word);
 				flagged = true;
 				return '<span class="toxic">' + match + '</span>'
 			});
@@ -78,7 +130,9 @@ window.onload = () => {
 		document.getElementById('chat-log').append(message);
 		scrollChat();
 		if (flagged) {
-			playAudio('../audio/sample.mp3');
+			// playAudio('../audio/sample.mp3');
+			var randomAudioSource = audioFiles[Math.floor(Math.random() * audioFiles.length)].href;
+			playAudio(randomAudioSource);
 			syncToxicTextAnimations();
 			header.style.display = 'block';
 			warning.style.display = 'grid';
@@ -98,11 +152,18 @@ window.onload = () => {
 	}
 
 	function playAudio(audioFile) {
-		if (!audio) {
-			audio = new Audio(audioFile);
-			audio.play();
-			audio.onended = () => audio = null;
-		}
+		return new Promise((resolve, reject) => {
+			if (!audio) {
+				audio = new Audio(audioFile);
+				audio.play();
+				audio.onended = () => {
+					audio = null;
+					resolve();
+				}
+			} else {
+				reject();
+			}
+		});
 	}
 
 	/* Based on Google Web Speech Demo https://github.com/googlearchive/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html */
@@ -164,5 +225,19 @@ window.onload = () => {
 						sendMessage(); /* Automatically send message at the end of a sentence */
 				};
 			}
+	}
+
+	window.audioTest = () => {
+		playAudio(audioFiles[0].href)
+		.then(() => playAudio(audioFiles[1].href))
+		.then(() => playAudio(audioFiles[2].href))
+		.then(() => playAudio(audioFiles[3].href))
+		.then(() => playAudio(audioFiles[4].href))
+		.then(() => playAudio(audioFiles[5].href))
+		.then(() => playAudio(audioFiles[6].href))
+		.then(() => playAudio(audioFiles[7].href))
+		.then(() => playAudio(audioFiles[8].href))
+		.then(() => playAudio(audioFiles[9].href))
+		.then(() => playAudio(audioFiles[10].href));
 	}
 }

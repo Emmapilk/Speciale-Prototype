@@ -88,15 +88,25 @@ body {
 	place-items: center;
 	position: absolute;
 	right: 1rem;
+	bottom: 15vh;
+	width: 150px;
+	height: 150px;
+	font-size: 150px;
+	font-weight: 400;
+	border-radius: 50%;
+	background-color: yellow;
+	animation: blink-fade 1s infinite;
+	z-index: 1;
+}
+@media only screen and (max-width: 768px) {
+#warning {
+	right: 1rem;
 	top: 2rem;
 	width: 25vw;
 	height: 25vw;
 	font-size: 23vw;
 	font-weight: 400;
-	border-radius: 50%;
-	background-color: yellow;
-	animation: blink-fade 1.5s infinite;
-	z-index: 2;
+	}
 }
 
 @keyframes blink-fade {
@@ -151,18 +161,28 @@ button#mic:disabled {
 
 #header {
 	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
+	position: absolute;
+	bottom: 15vh;
 	right: 0;
 	padding: 0.125rem;
 	text-align: center;
-	font-size: 1.5rem;
+	font-size: 1rem;
 	font-weight: bold;
-	line-height: 1.625rem;
+	line-height: 1.125rem;
 	background-color: red;
 	color: white;
-	z-index: 1;
+	z-index: 2;
+	transform: translateY(100%);
+}
+
+@media only screen and (max-width: 768px) {
+	#header {
+		bottom: initial;
+		top: 0;
+		left: 0;
+		right: 0;
+		transform: none;
+	}
 }
 
 .footer {
