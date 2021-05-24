@@ -180,7 +180,7 @@ window.onload = () => {
 		micButton.disabled = true;
 	} else {
 		/* On click start */
-		micButton.onmousedown = () => {
+		micButton.onpointerdown = () => {
 			listening = true;
 			micButton.classList.add('blink-red');
 			final_transcript = '';
@@ -188,7 +188,7 @@ window.onload = () => {
 			recognition.start();
 		}
 		/* On click released */
-		micButton.onmouseup = () => {
+		micButton.onpointerup = () => {
 			setTimeout(() => {
 				listening = false;
 				micButton.classList.remove('blink-red');
