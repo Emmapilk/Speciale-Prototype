@@ -2,6 +2,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font-size: 1.2rem;
+    	font-family: 'Roboto';
 }
 
 body {
@@ -22,7 +23,6 @@ body {
 }
 
 .chat-box {
-    font-family: 'Roboto';
 	font-size: 1rem;
 	overflow: hidden;
 	position: absolute;
@@ -173,7 +173,7 @@ button#mic:disabled {
 	background-color: red;
 	color: white;
 	z-index: 2;
-	transform: translateY(100%);
+	transform: translateY(125%);
 }
 
 @media only screen and (max-width: 768px) {
