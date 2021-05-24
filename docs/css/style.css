@@ -88,7 +88,7 @@ body {
 	place-items: center;
 	position: absolute;
 	right: calc(1rem + 100px);
-	bottom: 15vh;
+	bottom: 20vh;
 	width: 150px;
 	height: 150px;
 	font-size: 150px;
@@ -162,7 +162,7 @@ button#mic:disabled {
 #header {
 	display: none;
 	position: absolute;
-	bottom: 15vh;
+	bottom: 20vh;
 	right: 1rem;
 	max-width: 350px;
 	padding: 0.125rem;
